@@ -1,0 +1,39 @@
+{
+  "name": "interface",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "cross-env NODE_ENV=dev nodemon ./bin/www",
+    "prod": "cross-env NODE_ENV=production nodemon ./bin/www",
+    "pm2": "pm2 start ./bin/www --watch"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bluebird": "^3.7.2",
+    "cookie-parser": "~1.4.4",
+    "dayjs": "^1.11.7",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-jwt": "^6.0.0",
+    "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "log4js": "^6.3.0",
+    "md5-node": "^1.0.1",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "pinyin": "^2.10.2",
+    "pug": "^3.0.2",
+    "redis": "^3.1.2"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "mongoose": "^5.12.3",
+    "multer": "^1.4.2",
+    "node-schedule": "^2.0.0",
+    "nodemailer": "^6.5.0",
+    "nodemon": "^2.0.7",
+    "silly-datetime": "^0.1.2"
+  }
+}

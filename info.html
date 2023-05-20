@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子页面</title>
+</head>
+<body>
+    <div id="msg">
+        
+
+    </div>
+    <script>
+
+        //监听onload事件,当页面加载完毕后，获取url中的参数
+        window.onload = function () {
+            // 获取url中的参数
+            let url = window.location.href;
+            let name = url.split('?')[1].split('=')[1];
+            console.log(name);
+            // 获取msg元素，将数据追加到msg元素中
+            let msg = document.querySelector('#msg');
+            msg.innerHTML += decodeURI(name) + '<br>';
+        }
+
+        let cast = new BroadcastChannel('channel');
+        cast.onmessage = function (e) {
+            console.log(e.data);
+            // 获取msg元素，将数据追加到msg元素中,并替换其url中的参数
+            let msg = document.querySelector('#msg');
+            msg.innerHTML += e.data + '<br>';
+            // 不刷新页面的前提下替换url中的参数
+            let url = window.location.href;
+            let newUrl = url.split('?')[0] + '?name=' + e.data;
+            window.history.pushState({}, 0, newUrl);
+        }
+    </script>
+</body>
+</html>
